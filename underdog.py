@@ -60,7 +60,8 @@ def main():
 if __name__ == "__main__":
     underdog_props = main()
     if underdog_props:
-        print(f"Underdog props: \n ------------------------------------")
+        print(f"Underdog props")
+        print("-" * 50)
         [print(prop) for prop in underdog_props.items()]
     else:
         print("Unable to access props")

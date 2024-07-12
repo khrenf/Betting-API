@@ -58,7 +58,8 @@ def main():
 if __name__ == "__main__":
     prizepick_props = main()
     if prizepick_props:
-        print(f"Prizepicks props: \n ------------------------------------")
+        print(f"Prizepicks props")
+        print('-' * 50)
         [print(prop) for prop in prizepick_props.items()]
     else:
         print("Unable to access props")
