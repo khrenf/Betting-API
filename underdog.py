@@ -1,14 +1,14 @@
 import requests
 from collections import defaultdict
-from config import underdog_url
+import config
 from standardizations import underdog_standardized_props
 
-def get_underdog_player_props(url, player_props_dict):
+def get_underdog_player_props(player_props_dict):
     """
     Fetches Underdog Fantasy player props from the given URL and populates the player props dictionary 
     Format of output: Each player has a dictionary of their props {player: {stat type: line}}
     """
-    response = requests.get(url)
+    response = requests.get(config.underdog_url)
     data = response.json()
     active_players = set() 
     for player in data['players']: 
@@ -49,7 +49,7 @@ def main():
     """
     underdog_player_props = defaultdict(dict)
     try:
-        get_underdog_player_props(underdog_url, underdog_player_props)
+        get_underdog_player_props(underdog_player_props)
     except Exception as e: 
         print(f"Error accessing props: {e}")
     if underdog_player_props == defaultdict(dict): 

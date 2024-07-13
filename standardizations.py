@@ -21,6 +21,31 @@ underdog_standardized_props = { #Converts stat types from native underdog format
     "3-Pointers Made": "3-PT Made"
 }
 
-prizepicks_standard_props = {
-
+draftkings_standardized_props = {
+    "Strikeouts": "Pitcher Strikeouts",
+    "Fantasy Points": "Fantasy Points",
+    "Hits Allowed": "Hits Allowed",
+    "Hits + Runs + RBIs": "Hits+Runs+RBIs",
+    "Runs": "Runs",
+    "Bats + Runs + RBIs": "",
+    "Total Bases": "Total Bases",
+    "Batter Strikeouts": "Pitcher Strikeouts",
+    "Batter Walks": "Walks Allowed",
+    "Pitching Outs": "Pitching Outs",
+    "Earned Runs Allowed": "Earned Runs Allowed",
+    "Singles": "Singles",
+    "Home Runs": "Home Runs",
+    "Hits": "Hits",
+    "RBIs": "RBIs",
+    "Singles": "Singles",
+    "Doubles": "Doubles",
+    "Walks": "Walks",
+    "Runs Scored": "Runs Scored",
+    "Strikeouts Thrown": "Pitcher Strikeouts",
+    "Walks Allowed": "Walks Allowed",
+    "Outs Recorded": "Pitching Outs",
+    "Points": "Points",
+    "Rebounds": "Rebounds",
+    "Threes": "3-PT Made",
+    "Assists": "Assists",
 }
