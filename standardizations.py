@@ -1,4 +1,6 @@
-underdog_standardized_props = { #Converts stat types from native underdog format to prizepicks format
+# Maps bet names from native site formats to prizepicks form
+# Enables comparison across platforms with different naming conventions
+underdog_standardized_props = {
     "Strikeouts": "Pitcher Strikeouts",
     "Fantasy Points": "Fantasy Points",
     "Hits Allowed": "Hits Allowed",
@@ -20,7 +22,6 @@ underdog_standardized_props = { #Converts stat types from native underdog format
     "Points + Rebounds": "Pts+Rebs",
     "3-Pointers Made": "3-PT Made"
 }
-
 draftkings_standardized_props = {
     "Strikeouts": "Pitcher Strikeouts",
     "Fantasy Points": "Fantasy Points",
@@ -48,4 +49,16 @@ draftkings_standardized_props = {
     "Rebounds": "Rebounds",
     "Threes": "3-PT Made",
     "Assists": "Assists",
+}
+fanduel_standardized_props = {
+    "Points": "Points",
+    "Assists": "Assists",
+    "Pts + Reb + Ast": "Pts+Rebs+Asts",
+    "Rebounds": "Rebounds",
+    "Reb + Ast": "Rebs+Asts",
+    "Pts + Ast": "Pts+Asts",
+    "Pts + Reb": "Pts+Rebs",
+    "Made Threes": "3-PT Made",
+    "Strikeouts": "Pitcher Strikeouts",
+    "Outs Recorded": "Pitching Outs"
 }
