@@ -1,5 +1,5 @@
-# Maps bet names from native site formats to prizepicks form
-# Enables comparison across platforms with different naming conventions
+# Maps bet names from native site formats to PrizePicks format
+# Ensures consistency for comparison across platforms using different naming conventions
 underdog_standardized_props = {
     "Strikeouts": "Pitcher Strikeouts",
     "Fantasy Points": "Fantasy Points",
@@ -20,7 +20,14 @@ underdog_standardized_props = {
     "Rebounds + Assists": "Rebs+Asts",
     "Points + Assists": "Pts+Asts",
     "Points + Rebounds": "Pts+Rebs",
-    "3-Pointers Made": "3-PT Made"
+    "3-Pointers Made": "3-PT Made",
+    "Games Played": "Total Games",
+    "Aces": "Aces",
+    "Double Faults": "Double Faults",
+    "First Set Aces": "First Set Aces",
+    "Aces + Double Faults": "Aces + Double Faults",
+    "Games Won": "Games Won",
+    "Games Lost": "Games Lost",
 }
 draftkings_standardized_props = {
     "Strikeouts": "Pitcher Strikeouts",

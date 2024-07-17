@@ -1,4 +1,4 @@
-prizepicks_sport_IDs = ['2', '3'] 
+prizepicks_sport_IDs = ['2', '3', '5'] # 2=MLB, 3=WNBA, 5=TENNIS
 prizepicks_headers = {
     "Connection": "keep-alive",
     "Accept": "application/json; charset=UTF-8",
@@ -11,6 +11,7 @@ prizepicks_headers = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 underdog_url = 'https://api.underdogfantasy.com/beta/v5/over_under_lines'
+underdog_sport_IDs = ['MLB', 'WNBA', 'TENNIS']
 draftkings_headers = {
     "Origin": "https://sportsbook.draftkings.com",
     "Priority": "u=1, i",
