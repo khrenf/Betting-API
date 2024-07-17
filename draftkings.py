@@ -1,7 +1,7 @@
 import requests
 from collections import defaultdict
-import standardizations
-import config
+import resources.standardizations as standardizations
+import resources.config as config
 from typing import List
 
 def get_draftkings_game_IDs(sport_IDs: List[str]):
@@ -11,15 +11,18 @@ def get_draftkings_game_IDs(sport_IDs: List[str]):
     """
     game_IDs = []
     for sport_ID in sport_IDs:
-        url = f"https://sportsbook-nash-usil.draftkings.com/sites/US-IL-SB/api/v5/eventgroups/{sport_ID}?format=json"
-        response = requests.get(url, headers=config.draftkings_headers)
-        data = response.json()
-        for event in data['eventGroup']['events']:
-            start_date = event['startDate'][:10] #get in format 2024-07-13
-            #if needed process based on date here 
-            if event['eventStatus']['state'] == "STARTED":
-                continue
-            game_IDs.append(event['eventId'])
+        try:
+            url = f"https://sportsbook-nash-usil.draftkings.com/sites/US-IL-SB/api/v5/eventgroups/{sport_ID}?format=json"
+            response = requests.get(url, headers=config.draftkings_headers)
+            data = response.json()
+            for event in data['eventGroup']['events']:
+                start_date = event['startDate'][:10] #get in format 2024-07-13
+                #if needed process based on date here 
+                if event['eventStatus']['state'] == "STARTED":
+                    continue
+                game_IDs.append(event['eventId'])
+        except: 
+            continue
     return game_IDs
     
 def get_draftkings_player_props(game_IDs: List[str]):
@@ -35,7 +38,6 @@ def get_draftkings_player_props(game_IDs: List[str]):
     for game_ID in game_IDs:
         game_url = f"https://sportsbook-ca-on.draftkings.com/api/team/markets/dkusil/v3/event/{game_ID}?format=json"
         response = requests.get(game_url, headers=config.draftkings_headers)
-        data = None
         try:
             data = response.json()
         except:
@@ -53,7 +55,7 @@ def get_draftkings_player_props(game_IDs: List[str]):
                         under = player_prop['outcomes'][1]['oddsAmerican']
                         line = player_prop['outcomes'][1]['line']
                         player_prop_item = {
-                            "line": line,
+                            "line": float(line),
                             "over": over,
                             "under": under
                         }
@@ -68,8 +70,12 @@ def main():
     Fetch all upcoming games IDs --> build player props dictionary from props in each game
     """
     all_game_IDs = get_draftkings_game_IDs(config.draftkings_sport_IDs)
-    return get_draftkings_player_props(all_game_IDs)
+    draftkings_props = get_draftkings_player_props(all_game_IDs)
+    if draftkings_props == defaultdict(dict):
+        return None
+    return draftkings_props
 
 if __name__ == "__main__":
     draftkings_props = main()
-    [print(prop) for prop in draftkings_props.items()]
+    if draftkings_props:
+        [print(prop) for prop in draftkings_props.items()]

@@ -1,6 +1,6 @@
 import requests
 from collections import defaultdict
-import config
+import resources.config as config
 
 def get_prizepicks_player_props(player_props_dict):
     """
@@ -9,12 +9,11 @@ def get_prizepicks_player_props(player_props_dict):
     """
     for sport_ID in config.prizepicks_sport_IDs:
         url = f"https://api.prizepicks.com/projections?league_id={sport_ID}&per_page=250&single_stat=true"
-        data = None
         response = requests.get(url, headers=config.prizepicks_headers)
         try:
             data = response.json()
             if not data.get('data'): #sometimes returns data if no sport is open, so check here 
-                print(f"No data available for sport ID: {sport_ID}")
+                # print(f"No data available for sport ID: {sport_ID}")
                 continue
         except: #sport has no props available
             continue
@@ -47,7 +46,7 @@ def get_prizepicks_player_props(player_props_dict):
             stat = prop['stat_type']
             if "Combo" in stat: #ensure only looking at single player bets
                 continue
-            player_props_dict[player_name][stat] = line 
+            player_props_dict[player_name][stat] = float(line)
 
 def main():
     """

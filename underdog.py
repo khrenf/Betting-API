@@ -1,7 +1,7 @@
 import requests
 from collections import defaultdict
-import config
-from standardizations import underdog_standardized_props
+import resources.config as config
+import resources.standardizations as standardizations
 
 def get_underdog_player_props(player_props_dict):
     """
@@ -16,7 +16,7 @@ def get_underdog_player_props(player_props_dict):
         Since the prop data has no info about the sport, we populate a set with players who have
         active props in sports we are interested in.
         """
-        if player['sport_id'] == 'MLB' or (player['sport_id'] == 'WNBA'):
+        if player['sport_id'] in config.underdog_sport_IDs:
             player_name = player['first_name'] + " " + player['last_name']
             active_players.add(player_name)
     for prop in data['over_under_lines']:
@@ -35,11 +35,11 @@ def get_underdog_player_props(player_props_dict):
         if (player_name not in active_players):
             continue
         try_stat, stat = ' '.join(prop_info[2:]), None
-        if try_stat in underdog_standardized_props: #handle case of name being more than 2 words, skip these for now
-            stat = underdog_standardized_props[try_stat]
+        if try_stat in standardizations.underdog_standardized_props: #handle case of name being more than 2 words, skip these for now
+            stat = standardizations.underdog_standardized_props[try_stat]
         else:
             continue
-        player_props_dict[player_name][stat] = line
+        player_props_dict[player_name][stat] = float(line)
     return player_props_dict
         
 def main():
