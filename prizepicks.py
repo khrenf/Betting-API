@@ -16,7 +16,7 @@ def get_prizepicks_player_props(player_props_dict):
                 # print(f"No data available for sport ID: {sport_ID}")
                 continue
         except Exception as e: #sport has no props available
-            print("Error accessing Prizepicks API: {e}")
+            print(f"Error accessing Prizepicks API: {e}")
             continue
         players_info = {} 
         for player in data['included']:
