@@ -1,14 +1,18 @@
 prizepicks_sport_IDs = ['2', '3', '5'] # 2=MLB, 3=WNBA, 5=TENNIS
 prizepicks_headers = {
     "Connection": "keep-alive",
-    "Accept": "application/json; charset=UTF-8",
+    "Accept": "application/json, text/plain, */*",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
-    "Access-Control-Allow-Credentials": "true",
-    "Sec-Fetch-Site": "same-origin",
-    "Sec-Fetch-Mode": "cors",
     "Referer": "https://app.prizepicks.com/",
     "Accept-Encoding": "gzip, deflate, br",
     "Accept-Language": "en-US,en;q=0.9",
+    "Origin": "https://app.prizepicks.com",
+    "Sec-Fetch-Site": "same-origin",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Dest": "empty",
+    "Upgrade-Insecure-Requests": "1",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache"
 }
 underdog_url = 'https://api.underdogfantasy.com/beta/v5/over_under_lines'
 underdog_sport_IDs = ['MLB', 'WNBA', 'TENNIS']
