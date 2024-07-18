@@ -1,0 +1,8 @@
+fastapi
+threading
+uvicorn
+time
+requests
+typing
+datetime
+sqlite3

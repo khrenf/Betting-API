@@ -2,8 +2,6 @@ from draftkings import main as get_draftkings_props
 from fanduel import main as get_fanduel_props
 from prizepicks import main as get_prizepicks_props
 from underdog import main as get_underdog_props
-from datetime import datetime
-import db
 
 def main():
     prizepicks_props = get_prizepicks_props()
@@ -49,7 +47,7 @@ def main():
                         num_lines_different += 1
                 except:
                     fanduel_line, fanduel_over, fanduel_under = -1, -1, -1
-                if num_lines_different >= 0:
+                if num_lines_different >= 1:
                     prop_item = {
                         "player": player,
                         "stat": stat,
@@ -66,12 +64,11 @@ def main():
     return return_props
 
 if __name__ == '__main__':
-    # props = main()
-    # props = json.dumps(props)
-    # print(props)
     props = main()
-    db.create_table()
-    for prop in props:
-        db.add_prop_to_table(prop)
+    print(props)
+    # props = main()
+    # db.create_table()
+    # for prop in props:
+    #     db.add_prop_to_table(prop)
     
     
