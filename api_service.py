@@ -37,4 +37,4 @@ if __name__ == '__main__':
     update_thread = threading.Thread(target=update_database)
     update_thread.daemon = True
     update_thread.start()
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=8000)
