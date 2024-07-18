@@ -105,7 +105,7 @@ def fetch_props():
                 "time_elapsed": time_message
             }
         props.append(prop_item)
-    return props
+    return props[::-1]
 
 def reset_database():
     """
