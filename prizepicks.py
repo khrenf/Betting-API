@@ -9,13 +9,14 @@ def get_prizepicks_player_props(player_props_dict):
     """
     for sport_ID in config.prizepicks_sport_IDs:
         url = f"https://api.prizepicks.com/projections?league_id={sport_ID}&per_page=250&single_stat=true"
-        response = requests.get(url, headers=config.prizepicks_headers)
         try:
+            response = requests.get(url, headers=config.prizepicks_headers)
             data = response.json()
             if not data.get('data'): #sometimes returns data if no sport is open, so check here 
                 # print(f"No data available for sport ID: {sport_ID}")
                 continue
-        except: #sport has no props available
+        except Exception as e: #sport has no props available
+            print("Error accessing Prizepicks API: {e}")
             continue
         players_info = {} 
         for player in data['included']:
